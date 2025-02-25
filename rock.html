@@ -1,0 +1,71 @@
+
+
+<html>
+
+<head>
+
+  <title>Rock, Paper, Scissors</title>
+
+</head>
+
+<body>
+
+  <h1>Rock, Paper, Scissors</h1>
+
+  <button onclick="playGame('rock')">Rock</button>
+
+  <button onclick="playGame('paper')">Paper</button>
+
+  <button onclick="playGame('scissors')">Scissors</button>
+
+  <p id="result"></p>
+
+ 
+
+  <script>
+
+    function playGame(userChoice) {
+
+      const choices = ["rock", "paper", "scissors"];
+
+      const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      let result;
+
+ 
+
+      if (userChoice === computerChoice) {
+
+        result = "It's a draw!";
+
+      } else if (
+
+        (userChoice === "rock" && computerChoice === "scissors") ||
+
+        (userChoice === "paper" && computerChoice === "rock") ||
+
+        (userChoice === "scissors" && computerChoice === "paper")
+
+      ) {
+
+        result = "You win!";
+
+      } else {
+
+        result = "You lose!";
+
+      }
+
+ 
+
+      document.getElementById("result").innerText =
+
+        `You chose ${userChoice}, Computer chose ${computerChoice}. ${result}`;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
