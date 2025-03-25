@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        .item {
+            background-color: #fffacd;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff4500;
+        }
+        .rating {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .rating span {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        .rating span:hover,
+        .rating span.active {
+            color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Kids Shop!</h1>
+
+    <div class="item">
+        <p>🧸 Teddy Bear - ₹200</p>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+
+    <script>
+        function rateItem(star, rating) {
+            const stars = star.parentElement.querySelectorAll("span");
+            stars.forEach((s, index) => {
+                if (index < rating) {
+                    s.classList.add("active");
+                } else {
+                    s.classList.remove("active");
+                }
+            });
+            alert(`You rated this item ${rating} stars!`);
+        }
+
+        function addToCart(item, price) {
+            alert(`${item} added to cart for ₹${price}`);
+        }
+    </script>
+
+</body>
+</html>

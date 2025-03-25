@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        .item {
+            background-color: #fffacd;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            border-radius: 8px;
+        }
+        .item.hidden {
+            display: none;
+        }
+        .filter-buttons {
+            margin: 20px;
+        }
+        .filter-buttons button {
+            background-color: #90ee90;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .filter-buttons button:hover {
+            background-color: #76c776;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Kids Shop!</h1>
+    <p>Filter items by category:</p>
+    <div class="filter-buttons">
+        <button onclick="filterItems('all')">All</button>
+        <button onclick="filterItems('Toys')">Toys</button>
+        <button onclick="filterItems('Sports')">Sports</button>
+        <button onclick="filterItems('Stationery')">Stationery</button>
+    </div>
+
+    <div class="item" data-category="Toys">
+        <p>🎈 Balloon - ₹50</p>
+        <button onclick="addToCart('Balloon', 50)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Toys">
+        <p>🧸 Teddy Bear - ₹200</p>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Toys">
+        <p>🚗 Toy Car - ₹150</p>
+        <button onclick="addToCart('Toy Car', 150)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Sports">
+        <p>🏏 Cricket Kit - ₹15,000</p>
+        <button onclick="addToCart('Cricket Kit', 15000)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Sports">
+        <p>⚽️ Football - ₹1,999</p>
+        <button onclick="addToCart('Football', 1999)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Sports">
+        <p>🛼 Skates - ₹7,999</p>
+        <button onclick="addToCart('Skates', 7999)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Stationery">
+        <p>✎ Gel Pen - ₹100</p>
+        <button onclick="addToCart('Gel Pen', 100)">Add to Cart</button>
+    </div>
+
+    <div class="item" data-category="Stationery">
+        <p>🍫 Chocolate - ₹220</p>
+        <button onclick="addToCart('Chocolate', 220)">Add to Cart</button>
+    </div>
+
+    <script>
+        function filterItems(category) {
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        let totalAmount = 0;
+
+        function addToCart(item, price) {
+            const cartList = document.getElementById("cartList");
+            const total = document.getElementById("totalAmount");
+
+            // Update cart items
+            if (cartList.innerHTML === "Cart is empty") {
+                cartList.innerHTML = item;
+            } else {
+                cartList.innerHTML += ", " + item;
+            }
+
+            // Update total amount
+            totalAmount += price;
+            total.innerHTML = totalAmount;
+        }
+    </script>
+
+</body>
+</html>
