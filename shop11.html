@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f8ff;
+        }
+        .header {
+            background-color: #232f3e;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+        .header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header input {
+            width: 60%;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+        }
+        .header button {
+            padding: 5px 10px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .item {
+            background-color: #fffacd;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff4500;
+        }
+        .cart, .discount {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #90ee90;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Logo Section -->
+        <img src="https://via.placeholder.com/150x50?text=Kids+Shop+Logo" alt="Kids Shop Logo">
+        <input type="text" placeholder="Search for products">
+        <button>Search</button>
+    </div>
+
+    <!-- Main Content -->
+    <h1>Welcome to Kids Shop!</h1>
+
+    <!-- Toys Section -->
+    <h2>Toys</h2>
+    <div class="item">
+        <p>🎈 Balloon - ₹50</p>
+        <button onclick="addToCart('Balloon', 50)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🧸 Teddy Bear - ₹200</p>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🚗 Toy Car - ₹150</p>
+        <button onclick="addToCart('Toy Car', 150)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🦖 Dinosaur Toy - ₹300</p>
+        <button onclick="addToCart('Dinosaur Toy', 300)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🎤 Karaoke Microphone - ₹500</p>
+        <button onclick="addToCart('Karaoke Microphone', 500)">Add to Cart</button>
+    </div>
+
+    <!-- Stationery Section -->
+    <h2>Stationery</h2>
+    <div class="item">
+        <p>✎ Gel Pen - ₹100</p>
+        <button onclick="addToCart('Gel Pen', 100)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>📒 Notebook - ₹80</p>
+        <button onclick="addToCart('Notebook', 80)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>📐 Geometry Box - ₹150</p>
+        <button onclick="addToCart('Geometry Box', 150)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🖍 Crayons - ₹50</p>
+        <button onclick="addToCart('Crayons', 50)">Add to Cart</button>
+    </div>
+
+    <!-- Sports Section -->
+    <h2>Sports</h2>
+    <div class="item">
+        <p>🏏 Cricket Kit - ₹15,000</p>
+        <button onclick="addToCart('Cricket Kit', 15000)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>⚽️ Football - ₹1,999</p>
+        <button onclick="addToCart('Football', 1999)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🏸 Badminton Set - ₹800</p>
+        <button onclick="addToCart('Badminton Set', 800)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🏀 Basketball - ₹700</p>
+        <button onclick="addToCart('Basketball', 700)">Add to Cart</button>
+    </div>
+
+    <!-- Snacks Section -->
+    <h2>Snacks</h2>
+    <div class="item">
+        <p>🍫 Chocolate - ₹220</p>
+        <button onclick="addToCart('Chocolate', 220)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🍭 Lollipop - ₹20</p>
+        <button onclick="addToCart('Lollipop', 20)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🍿 Popcorn - ₹100</p>
+        <button onclick="addToCart('Popcorn', 100)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🥤 Juice Box - ₹80</p>
+        <button onclick="addToCart('Juice Box', 80)">Add to Cart</button>
+    </div>
+
+    <!-- JavaScript Section -->
+    <script>
+        let cart = [];
+        function addToCart(item, price) {
+            const existingItem = cart.find(c => c.name === item);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: item, price, quantity: 1 });
+            }
+            updateCart();
+        }
+        function updateCart() {
+            console.log(cart); // Debugging purposes
+        }
+    </script>
+
+</body>
+</html>

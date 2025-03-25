@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        .header {
+            background-color: #232f3e;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+        .header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header input {
+            width: 60%;
+            padding: 5px;
+            border-radius: 4px;
+            border: none;
+        }
+        .header button {
+            padding: 5px 10px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .item {
+            background-color: #fffacd;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff4500;
+        }
+        .cart, .discount {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #90ee90;
+            display: inline-block;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <!-- Logo Section -->
+        <img src="https://via.placeholder.com/150" alt="Kids Shop Logo">
+        <input type="text" placeholder="Search for products">
+        <button>Search</button>
+    </div>
+
+    <!-- Main Content -->
+    <h1><span>Welcome to Kids Shop!</span></h1>
+
+    <!-- Toys Section -->
+    <h2>Toys</h2>
+    <div class="item">
+        <p>🎈 Balloon - ₹50</p>
+        <button onclick="addToCart('Balloon', 50)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🧸 Teddy Bear - ₹200</p>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🚗 Toy Car - ₹150</p>
+        <button onclick="addToCart('Toy Car', 150)">Add to Cart</button>
+    </div>
+    <div class="item">
+        <p>🦖 Dinosaur Toy - ₹300</p>
+        <button onclick="addToCart('Dinosaur Toy', 300)">Add to Cart</button>
+    </div>
+
+    <!-- Shopping Cart Section -->
+    <div id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p>Total: ₹<span id="total-price">0</span></p>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <!-- Discount Code Section -->
+    <div class="discount">
+        <h3>Have a discount code?</h3>
+        <input type="text" id="discount-code" placeholder="Enter code">
+        <button onclick="applyDiscount()">Apply</button>
+        <p id="discount-message" style="color: green;"></p>
+    </div>
+
+    <script>
+        let cart = [];
+        const discountCodes = {
+            "WELCOME10": 10,
+            "SUMMER20": 20,
+            "MEGA50": 50
+        };
+        let discountAmount = 0;
+
+        function addToCart(item, price) {
+            const existingItem = cart.find(c => c.name === item);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: item, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.innerHTML = `${item.name} - ₹${item.price} x ${item.quantity}`;
+                total += item.price * item.quantity;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            if (discountAmount > 0) {
+                total = total - (total * (discountAmount / 100));
+            }
+
+            document.getElementById('total-price').innerText = total.toFixed(2);
+        }
+
+        function applyDiscount() {
+            const codeInput = document.getElementById('discount-code').value.trim();
+            if (discountCodes[codeInput]) {
+                discountAmount = discountCodes[codeInput];
+                document.getElementById('discount-message').innerText = `Discount applied: ${discountAmount}% off!`;
+                updateCart();
+            } else {
+                document.getElementById('discount-message').innerText = 'Invalid discount code.';
+                discountAmount = 0;
+            }
+        }
+
+        function checkout() {
+            alert('Checkout complete! Thank you for shopping.');
+            cart = [];
+            discountAmount = 0;
+            updateCart();
+        }
+    </script>
+
+</body>
+</html>

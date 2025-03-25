@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Shopping Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #ff4500;
+            position: relative;
+            overflow: hidden;
+            animation: glow 2s infinite alternate;
+        }
+        h1 span {
+            display: inline-block;
+        }
+        .item {
+            background-color: #fffacd;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff4500;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #90ee90;
+            display: inline-block;
+            border-radius: 10px;
+        }
+        .rating {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .rating span {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        .rating span:hover,
+        .rating span.active {
+            color: #ff4500;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff4500, 0 0 20px #ff4500;
+            }
+            to {
+                text-shadow: 0 0 20px #ff6347, 0 0 40px #ff6347;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1><span>Welcome to Kids Shop!</span></h1>
+
+    <!-- Toys Section -->
+    <h2>Toys</h2>
+    <div class="item">
+        <p>🎈 Balloon - ₹50</p>
+        <button onclick="addToCart('Balloon', 50)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>🧸 Teddy Bear - ₹200</p>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>🚗 Toy Car - ₹150</p>
+        <button onclick="addToCart('Toy Car', 150)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>🦖 Dinosaur Toy - ₹300</p>
+        <button onclick="addToCart('Dinosaur Toy', 300)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+
+    <!-- Stationery Section -->
+    <h2>Stationery</h2>
+    <div class="item">
+        <p>✎ Gel Pen - ₹100</p>
+        <button onclick="addToCart('Gel Pen', 100)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>📒 Notebook - ₹80</p>
+        <button onclick="addToCart('Notebook', 80)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+
+    <!-- Sports Section -->
+    <h2>Sports</h2>
+    <div class="item">
+        <p>🏏 Cricket Kit - ₹15,000</p>
+        <button onclick="addToCart('Cricket Kit', 15000)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>⚽️ Football - ₹1,999</p>
+        <button onclick="addToCart('Football', 1999)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+
+    <!-- Snacks Section -->
+    <h2>Snacks</h2>
+    <div class="item">
+        <p>🍫 Chocolate - ₹220</p>
+        <button onclick="addToCart('Chocolate', 220)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+    <div class="item">
+        <p>🍭 Lollipop - ₹20</p>
+        <button onclick="addToCart('Lollipop', 20)">Add to Cart</button>
+        <div class="rating">
+            <span onclick="rateItem(this, 1)">★</span>
+            <span onclick="rateItem(this, 2)">★</span>
+            <span onclick="rateItem(this, 3)">★</span>
+            <span onclick="rateItem(this, 4)">★</span>
+            <span onclick="rateItem(this, 5)">★</span>
+        </div>
+    </div>
+
+    <script>
+        function rateItem(star, rating) {
+            const stars = star.parentElement.querySelectorAll("span");
+            stars.forEach((s, index) => {
+                if (index < rating) {
+                    s.classList.add("active");
+                } else {
+                    s.classList.remove("active");
+                }
+            });
+            alert(`You
